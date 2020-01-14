@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <style>
+    #board {
+        display: grid;
+        align-content: center;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 1fr;
+        background-color: indianred;
+        grid-gap:10px;
+    }
+    .box {
+        text-align: center;
+        display:grid;
+        align-items: center;
+        position:relative;
+        background-color:white;
+        font-size: 30px;
+    }
+    #board::before {
+        content: '';
+        width: 0;
+        padding-bottom: 100%;
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+    }
+    .box:first-child {
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+    }
+    </style>
+  </head>
+    
+<body>
+    <!-- div#TicTacToe>v-app>v-card[outlined].mx-auto.ma-5[width="500"][elevation="12"]>v-card-title>hq.display-1.text--primary{{{appInfo.appName}}}^v-divider+v-card-text>v-chip.ma2{User}+v-chip.ma2{Computer}^div.ma-5#board>div.box#box$*9^v-divider+footer.ma-5{Developed By: {{appInfo.developer}}} -->
+    <div id="app">
+        <v-app>
+            <v-card outlined="" elevation="12" class="mx-auto ma-5" width="500">
+                <v-card-title>
+                    <!-- center this -->
+                    <h3 class="display-1 text--primary">{{appInfo.appName}}</h3>
+                </v-card-title>
+                <v-divider></v-divider>
+                <v-card-text>
+                    <!-- better styling here -->
+                    <v-chip class="pa-6">User</v-chip>
+                    <v-chip class="pa-6">Computer</v-chip>
+                </v-card-text>
+                <v-card-title>
+                    <h4 v-if="winner != ''" class="display-1 text--primary">{{winner}}</h4>
+                    <h4 v-else class="display-1 text--primary">Game in Progress</h4>
+                </v-card-title>
+                <v-divider></v-divider>
+                <div class="grid-container" id="board">
+                    <template v-for="(n, i) in 3">
+                        <template v-for="(n, j) in 3">
+                            <div @click="performMove(i,j)" class="box">{{board[i][j]}}</div>
+                        </template>
+                    </template>
+                </div>
+                <v-spacer></v-spacer>
+                <v-divider></v-divider>
+                    <v-btn block color="primary" @click="resetBoard()" >Reset Board</v-btn>
+                <v-divider></v-divider>
+                <footer class="ma-5">Developed By: {{appInfo.developer}}</footer>
+            </v-card>
+        </v-app>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>
