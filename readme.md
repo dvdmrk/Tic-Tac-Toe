@@ -223,3 +223,5 @@ var app = new Vue({
 ```
 
 </details>
+
+![alt text](images/tictactoe.gif "Run Powershell as Adminstrator")
