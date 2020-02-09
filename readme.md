@@ -1,6 +1,6 @@
 # A simple Tic Tac Toe Game with Vue
 
-# 1.  Step 1)
+## 1.  Step 1)
 <details>
 <summary>
 Create index.html
